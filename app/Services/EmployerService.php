@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Employer;
+use App\Models\Post;
 use App\Repositories\EmployerRepository;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -83,7 +83,7 @@ class EmployerService
      */
     public function updatePost($data, $id)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($data, [
             'name' => 'sometimes|required|max:256',
             'email' => 'sometimes|required|email',
             'phone' => 'sometimes|required|numeric',

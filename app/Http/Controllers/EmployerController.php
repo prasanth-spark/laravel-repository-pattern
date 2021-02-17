@@ -31,8 +31,6 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        $result = ['status' => 200];
-
         try {
             $result['data'] = $this->employerService->getAll();
         } catch (Exception $e) {
@@ -42,7 +40,7 @@ class EmployerController extends Controller
             ];
         }
 
-        return response()->json($result, $result['status']);
+        return response()->json($result);
     }
 
     /**
@@ -63,8 +61,6 @@ class EmployerController extends Controller
      */
     public function store(Request $request)
     {
-
-        $result = ['status' => 200];
         try {
             $result['data'] = $this->employerService->savePostData($request->all());
         } catch (Exception $e) {
@@ -74,7 +70,7 @@ class EmployerController extends Controller
             ];
         }
 
-        return response()->json($result, $result['status']);
+        return response()->json($result);
     }
 
     /**
@@ -85,8 +81,6 @@ class EmployerController extends Controller
      */
     public function show($id)
     {
-        $result = ['status' => 200];
-
         try {
             $result['data'] = $this->employerService->getById($id);
         } catch (Exception $e) {
@@ -95,7 +89,7 @@ class EmployerController extends Controller
                 'error' => $e->getMessage()
             ];
         }
-        return response()->json($result, $result['status']);
+        return response()->json($result);
     }
 
     /**
@@ -118,12 +112,6 @@ class EmployerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only([
-            'title',
-            'description'
-        ]);
-
-        $result = ['status' => 200];
 
         try {
             $result['data'] = $this->employerService->updatePost($data, $id);
@@ -135,7 +123,7 @@ class EmployerController extends Controller
             ];
         }
 
-        return response()->json($result, $result['status']);
+        return response()->json($result);
 
     }
 
@@ -147,8 +135,6 @@ class EmployerController extends Controller
      */
     public function destroy($id)
     {
-        $result = ['status' => 200];
-
         try {
             $result['data'] = $this->employerService->deleteById($id);
         } catch (Exception $e) {
@@ -157,6 +143,6 @@ class EmployerController extends Controller
                 'error' => $e->getMessage()
             ];
         }
-        return response()->json($result, $result['status']);
+        return response()->json($result);
     }
 }
