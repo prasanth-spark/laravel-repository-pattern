@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Post;
+use App\Models\Employer;
 use App\Repositories\EmployerRepository;
 use Exception;
 use Illuminate\Support\Facades\DB;
